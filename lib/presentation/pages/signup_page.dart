@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:login_sample/core/constants.dart';
-import 'package:login_sample/presentation/pages/signup_page.dart';
+import 'package:login_sample/presentation/pages/login_page.dart';
 
 import '../widgets/common_textfield.dart';
 import '../widgets/custom_text.dart';
@@ -10,8 +10,8 @@ import '../widgets/login_options.dart';
 import '../widgets/title_name.dart';
 import '../widgets/title_message.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class SignUpPage extends StatelessWidget {
+  SignUpPage({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   void validateAndSave() {
     final form = formKey.currentState;
@@ -33,7 +33,7 @@ class LoginPage extends StatelessWidget {
             Icons.arrow_back_ios_new_outlined,
             color: Colors.white,
           ),
-          title: const TitleName("Log in"),
+          title: const TitleName("Sign up"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16),
@@ -45,10 +45,28 @@ class LoginPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TitleMessage(
-                      firstText: "Login with one of the following options.",
+                      firstText: 'Sign up with one of the following options.',
                     ),
                     const SizedBox(height: 10),
                     const LoginOptions(),
+                    kHeight30,
+                    const CustomText(
+                      "Name",
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    kHeight20,
+                    CommonTextField(
+                      hintText: "Oliver Cederborg",
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Name cannot be blank';
+                        } else {
+                          return null;
+                        }
+                      },
+                    ),
                     kHeight30,
                     const CustomText(
                       "Email",
@@ -58,16 +76,12 @@ class LoginPage extends StatelessWidget {
                     ),
                     kHeight20,
                     CommonTextField(
-                      hintText: "hey@olivercederborg.com",
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Email cannot be blank';
-                        } else {
-                          return null;
-                        }
-                      },
+                      hintText: "tim@apple.com",
+                      validator: (value) =>
+                          value!.isEmpty ? 'Email cannot be blank' : null,
+                      showSuffixIcon: false,
                     ),
-                    kHeight30,
+                    kHeight20,
                     const CustomText(
                       "Password",
                       fontSize: 16,
@@ -76,7 +90,7 @@ class LoginPage extends StatelessWidget {
                     ),
                     kHeight20,
                     CommonTextField(
-                      hintText: "Enter your password",
+                      hintText: "Pick a strong password",
                       validator: (value) =>
                           value!.isEmpty ? 'Password cannot be blank' : null,
                       showSuffixIcon: false,
@@ -87,7 +101,9 @@ class LoginPage extends StatelessWidget {
                         height: 44.0,
                         width: 350,
                         decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
                           gradient: LinearGradient(
                             colors: [
                               Color.fromARGB(255, 243, 59, 224),
@@ -101,7 +117,7 @@ class LoginPage extends StatelessWidget {
                               primary: Colors.transparent,
                               shadowColor: Colors.transparent),
                           child: const Text(
-                            'Log in',
+                            'Create Account',
                             style: TextStyle(
                               fontSize: 18,
                             ),
@@ -114,7 +130,7 @@ class LoginPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const CustomText(
-                          "Don't have an account?",
+                          "Already have an account?",
                           fontSize: 16,
                           fontWeight: FontWeight.normal,
                         ),
@@ -122,11 +138,11 @@ class LoginPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () => Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => SignUpPage(),
+                              builder: (context) => LoginPage(),
                             ),
                           ),
                           child: const Text(
-                            "Sign up",
+                            "Log in",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                             ),

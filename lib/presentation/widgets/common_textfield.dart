@@ -5,9 +5,13 @@ class CommonTextField extends StatelessWidget {
     Key? key,
     required this.hintText,
     required this.validator,
+    this.iconData = Icons.person,
+    this.showSuffixIcon = false,
   }) : super(key: key);
   final String hintText;
   final FormFieldValidator<String>? validator;
+  final IconData iconData;
+  final bool showSuffixIcon;
   // final double fontSize;
   // final Color color;
   // final FontWeight fontWeight;
@@ -18,6 +22,7 @@ class CommonTextField extends StatelessWidget {
       validator: validator,
       //onSaved: (value) => email = value,
       decoration: InputDecoration(
+        suffixIcon: const Icon(Icons.check_box),
         hintText: hintText,
         focusedBorder: const OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(14)),

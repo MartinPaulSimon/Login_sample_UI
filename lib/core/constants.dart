@@ -21,3 +21,5 @@ const kWidth70 = SizedBox(width: 70);
 const kWidth80 = SizedBox(width: 80);
 const kWidth90 = SizedBox(width: 90);
 const kWidth100 = SizedBox(width: 100);
+
+const kPrimaryColor = Colors.purple;
