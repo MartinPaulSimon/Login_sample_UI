@@ -29,9 +29,16 @@ class SignUpPage extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: AppBar(
           backgroundColor: Colors.black,
-          leading: const Icon(
-            Icons.arrow_back_ios_new_outlined,
-            color: Colors.white,
+          leading: GestureDetector(
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => LoginPage(),
+              ),
+            ),
+            child: const Icon(
+              Icons.arrow_back_ios_new_outlined,
+              color: Colors.white,
+            ),
           ),
           title: const TitleName("Sign up"),
         ),
